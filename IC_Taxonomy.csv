@@ -1,0 +1,57 @@
+ID,Title,Year,Environment Knowledge,Control System Knowledge,Goal Knowledge
+IC001,Online adaptive least squares support vector machine and its application in utility boiler combustion optimization systems,2011,1,1,0
+IC002,Nonlinear Adaptive Flight Control Using Backstepping and Neural Networks Controller,2001,1,1,0
+IC003,Flight Testing of Reconfigurable Control Law on the X-36 Tailless Aircraft,2001,1,1,0
+IC004,Adaptive Trajectory Control for Autonomous Helicopters,2005,1,1,0
+IC005,Flight Test Implementation of a Second Generation Intelligent Flight Control System,2005,1,1,0
+IC006,Adaptive Neuro-Control for Spacecraft Attitude Control,1994,1,1,0
+IC007,Adaptive fuzzy sliding mode control for flexible satellite,2005,1,1,0
+IC008,Intelligent control for large-scale variable speed variable pitch wind turbines,2004,1,1,0
+IC009,Load Frequency Control in Interconnected Power System Using Modified Dynamic Neural Networks,2007,1,1,0
+IC010,Intelligent control system design for UAV using a recurrent wavelet neural network,2012,1,1,0
+IC011,Intelligent optimal control with dynamic neural networks,2003,1,1,0
+IC012,Design and Implementation of Industrial Neural Network Controller Using Backstepping,2003,1,1,0
+IC013,"Modeling and control of shape memory alloy actuators using Preisach model, genetic algorithm and fuzzy logic",2008,1,1,0
+IC014,Rate-Dependent Hysteresis Modeling and Control of a Piezostage Using Online Support Vector Machine and Relevance Vector Machine,2012,1,1,0
+IC015,Neural Network Application for Direct Feedback Controllers,1992,1,1,0
+IC016,Adaptive Neural Network Control of Hard Disk Drives With Hysteresis Friction Nonlinearity,2011,1,1,0
+IC017,Intelligent Control Systems and Applications on Smart Grids,2016,2,1,0
+IC018,"Guidance and Control of Autonomous, Flexible Wing UAV with Advanced Vision System",2018,2,1,0
+IC019,Identification and Learning Control of Ocean Surface Ship Using Neural Networks,2012,2,1,0
+IC020,Robust adaptive control of a quadrotor helicopter,2011,2,1,0
+IC021,Dynamic Load Positioning for Subsea Installation via Adaptive Neural Control,2010,2,1,0
+IC022,Adaptive Neural Network Control of an Uncertain Robot With Full-State Constraints,2016,2,1,0
+IC023,Control of the Drive System With Stiff and Elastic Couplings Using Adaptive Neuro-Fuzzy Approach,2007,2,1,0
+IC024,Force control in a pneumatic system using hybrid adaptive neuro-fuzzy model reference control,2005,2,1,0
+IC025,Neural network-based sliding mode variable structure control for Mars entry,2011,3,1,0
+IC026,Fault diagnosis of ball bearings using machine learning methods,2011,0,2,0
+IC027,Fault detection and diagnosis of an industrial steam turbine using fusion of SVM (support vector machine) and ANFIS (adaptive neuro-fuzzy inference system) classifier,2010,1,2,0
+IC028,Fault Tolerant Control for a Class of Nonlinear Systems with Application to Near Space Vehicle,2011,2,2,0
+IC029,On-line optimisation of culture temperature for ethanol fermentation using a genetic algorithm,1996,0,0,1
+IC030,Integrating Neural Networks and Knowledge-Based Systems for Intelligent Robotic Control,1990,1,1,1
+IC031,Self-adaptive neuro-fuzzy systems for autonomous underwater vehicle control,2001,1,1,1
+IC032,Trajectory Planning and Optimized Adaptive Control for a Class of Wheeled Inverted Pendulum Vehicle Models,2013,1,1,1
+IC033,Intelligent Control for Brake Systems,1999,1,1,1
+IC034,A Fast Adaptive Memetic Algorithm for Online and Offline Control Design of PMSM Drives,2007,1,1,1
+IC035,Reusable launch vehicle adaptive guidance and control using neural networks,2001,2,1,1
+IC036,Rapid Trajectory Optimization Using Computational Intelligence for Guidance and Conceptual Design of Multistage Space Launch Vehicles,2005,2,1,1
+IC037,"Development of a Recurrent Fuzzy CMAC With Adjustable Input Space Quantization and Self-Tuning Learning Rate for Control of a Dual-Axis
+Piezoelectric Actuated Micromotion Stage",2013,2,1,1
+IC038,"A Recurrent Neural-Network-Based Sensor and Actuator Fault Detection and Isolation for Nonlinear Systems With Application to the
+Satellite’s Attitude Control Subsystem",2009,2,2,1
+IC039,An approach to model interest for planetary rover through Dezert- Smarandache Theory,2009,1,0,2
+IC040,An expert control strategy using neural networks for the electrolytic process in zinc hydrometallurgy,1999,1,0,2
+IC041,Using Autonomy Flight Software to Improve Science Return on Earth Observing One,2005,1,0,2
+IC042,"Wisdom - An Advanced Intelligent, Fault-tolerant System for Autonomy in Risky Environments",2004,2,1,2
+IC043,Adversarial behavioral cloning,2020,0,1,1
+IC044,Towards Intelligent Control via GeneticProgramming,2020,3,4,1
+IC045,Adaptive neuro fuzzy based hybrid force/position control for an industrial robot manipulator,2014,1,0,0
+IC046,Intelligent Control Navigation Emerging on Multiple Mobile Robots Applying Social Wound Treatment,2019,1,1,1
+IC047,Robust Adaptive Sliding Mode Neural Networks Control for IndustrialRobot Manipulators,2019,1,1,0
+IC048,Reliable Intelligent Path Following Control for aRobotic Airship Against Sensor Faults,2019,1,2,0
+IC049,Neuro-Inspired Reward-Based Tracking Control for Robotic Manipulators with Unknown Dynamics,2017,2,1,0
+IC050,Research on Intelligent Fuzzy Control Algorithm for Moving Path of HandlingRobot,2019,1,1,2
+IC051,Intelligent Control of Industrial Robotic Three Degree of Freedom Crane Using Artificial Neural Network,2016,1,1,0
+IC052,Adaptive Robotic Arm Control using Artificial Neural Network,2018,1,1,0
+IC053,A Genetic Programming Based Rule Generation Approach for Intelligent Control Systems,2010,1,4,1
+IC054,An Intelligent Control System Using Object Model by Real-time Learning,2007,2,1,1
