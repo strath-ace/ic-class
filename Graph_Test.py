@@ -15,28 +15,27 @@ import json
 # import the css template, and pass the css template into dash
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-app.title = "Intelligent Control Network"
+app.title = "Transaction Network"
 
-YEAR=[1990, 2020]
-ID="IC001"
+YEAR=[1996, 2016]
+ACCOUNT="IC001"
 
 ##############################################################################################################################################################
 def network_graph(yearRange, AccountToSearch):
 
-    #edge1 = pd.read_csv('edge1.csv')
-    node1 = pd.read_csv('IC_Taxonomy.csv')
+    edge1 = pd.read_csv('edges.csv')
+    node1 = pd.read_csv('reducedTax.csv')
 
     # filter the record by datetime, to enable interactive control through the input box
-    #edge1['Datetime'] = "" # add empty Datetime column to edge1 dataframe
+    #edge1['Year'] = "" # add empty Datetime column to edge1 dataframe
     accountSet=set() # contain unique account
-    for index in range(0,len(node1)):
-        #edge1['Datetime'][index] = datetime.strptime(edge1['Date'][index], '%d/%m/%Y')
-        if node1['Year'][index]<yearRange[0] or node1['Year'][index]>yearRange[1]:
-            node1.drop(axis=0, index=index, inplace=True)
-            continue
-        accountSet.add(node1['ID'][index])
-        accountSet.add(node1['Title'][index])
-        accountSet.add(node1['Goal Knowledge'][index])
+    for index in range(0,len(edge1)):
+        #edge1['Year'][index] = datetime.strptime(edge1['Date'][index], '%d/%m/%Y')
+        #if edge1['Datetime'][index].year<yearRange[0] or edge1['Datetime'][index].year>yearRange[1]:
+        #    edge1.drop(axis=0, index=index, inplace=True)
+        #    continue
+        accountSet.add(edge1['Source'][index])
+        accountSet.add(edge1['Target'][index])
 
     # to define the centric point of the networkx layout
     shells=[]
@@ -50,9 +49,8 @@ def network_graph(yearRange, AccountToSearch):
     shells.append(shell2)
 
 
-    G = nx.from_pandas_edgelist(node1, 'ID', 'ID', edge_attr=True)
+    G = nx.from_pandas_edgelist(edge1, 'Source', 'Target', edge_attr=True, create_using=nx.MultiDiGraph())
     nx.set_node_attributes(G, node1.set_index('ID')['Title'].to_dict(), 'Title')
-    nx.set_node_attributes(G, node1.set_index('ID')['Year'].to_dict(), 'Year')
     nx.set_node_attributes(G, node1.set_index('ID')['Goal Knowledge'].to_dict(), 'Goal Knowledge')
     # pos = nx.layout.spring_layout(G)
     # pos = nx.layout.circular_layout(G)
@@ -81,7 +79,7 @@ def network_graph(yearRange, AccountToSearch):
 
         figure = {
             "data": traceRecode,
-            "layout": go.Layout(title='Interactive Transaction Visualization', showlegend=False,
+            "layout": go.Layout(title='Interactive Taxonomy Visualization', showlegend=False,
                                 margin={'b': 40, 'l': 40, 'r': 40, 't': 40},
                                 xaxis={'showgrid': False, 'zeroline': False, 'showticklabels': False},
                                 yaxis={'showgrid': False, 'zeroline': False, 'showticklabels': False},
@@ -134,9 +132,8 @@ def network_graph(yearRange, AccountToSearch):
     for edge in G.edges:
         x0, y0 = G.nodes[edge[0]]['pos']
         x1, y1 = G.nodes[edge[1]]['pos']
-        hovertext = "From: " + str(G.edges[edge]['ID']) + "<br>" + "To: " + str(
-            G.edges[edge]['ID']) + "<br>" + "Goal Knowledge: " + str(
-            G.edges[edge]['Goal Knowledge']) + "<br>" + "Year: " + str(G.edges[edge]['Year'])
+        hovertext = "From: " + str(G.edges[edge]['Source']) + "<br>" + "To: " + str(
+            G.edges[edge]['Target'])
         middle_hover_trace['x'] += tuple([(x0 + x1) / 2])
         middle_hover_trace['y'] += tuple([(y0 + y1) / 2])
         middle_hover_trace['hovertext'] += tuple([hovertext])
@@ -146,7 +143,7 @@ def network_graph(yearRange, AccountToSearch):
     #################################################################################################################################################################
     figure = {
         "data": traceRecode,
-        "layout": go.Layout(title='Interactive Transaction Visualization', showlegend=False, hovermode='closest',
+        "layout": go.Layout(title='Interactive Taxonomy Visualization', showlegend=False, hovermode='closest',
                             margin={'b': 40, 'l': 40, 'r': 40, 't': 40},
                             xaxis={'showgrid': False, 'zeroline': False, 'showticklabels': False},
                             yaxis={'showgrid': False, 'zeroline': False, 'showticklabels': False},
@@ -158,11 +155,7 @@ def network_graph(yearRange, AccountToSearch):
                                     ay=(G.nodes[edge[0]]['pos'][1] + G.nodes[edge[1]]['pos'][1]) / 2, axref='x', ayref='y',
                                     x=(G.nodes[edge[1]]['pos'][0] * 3 + G.nodes[edge[0]]['pos'][0]) / 4,
                                     y=(G.nodes[edge[1]]['pos'][1] * 3 + G.nodes[edge[0]]['pos'][1]) / 4, xref='x', yref='y',
-                                    showarrow=True,
-                                    arrowhead=3,
-                                    arrowsize=4,
-                                    arrowwidth=1,
-                                    opacity=1
+                                    showarrow=False
                                 ) for edge in G.edges]
                             )}
     return figure
@@ -177,7 +170,7 @@ styles = {
 
 app.layout = html.Div([
     #########################Title
-    html.Div([html.H1("Intelligent Control Network Graph")],
+    html.Div([html.H1("Transaction Network Graph")],
              className="row",
              style={'textAlign': "center"}),
     #############################################################################################define the row
@@ -198,17 +191,11 @@ app.layout = html.Div([
                         children=[
                             dcc.RangeSlider(
                                 id='my-range-slider',
-                                min=1992,
-                                max=2020,
+                                min=1996,
+                                max=2016,
                                 step=1,
-                                value=[1990, 2020],
+                                value=[1996, 2016],
                                 marks={
-                                    1990: {'label': '1990'},
-                                    1991: {'label': '1991'},
-                                    1992: {'label': '1992'},
-                                    1993: {'label': '1993'},
-                                    1994: {'label': '1994'},
-                                    1995: {'label': '1995'},
                                     1996: {'label': '1996'},
                                     1997: {'label': '1997'},
                                     1998: {'label': '1998'},
@@ -229,17 +216,13 @@ app.layout = html.Div([
                                     2013: {'label': '2013'},
                                     2014: {'label': '2014'},
                                     2015: {'label': '2015'},
-                                    2016: {'label': '2016'},
-                                    2017: {'label': '2017'},
-                                    2018: {'label': '2018'},
-                                    2019: {'label': '2019'},
-                                    2020: {'label': '2020'}
+                                    2016: {'label': '2016'}
                                 }
                             ),
                             html.Br(),
                             html.Div(id='output-container-range-slider')
                         ],
-                        style={'height': '600px', 'width': '1000px'}
+                        style={'height': '300px'}
                     ),
                     html.Div(
                         className="twelve columns",
@@ -249,8 +232,7 @@ app.layout = html.Div([
 
                             Input the paper to visualize.
                             """)),
-                            dcc.Input(id="input1", type="text", placeholder="Title"),
-                            #dcc.Input(id="input2", type="text", placeholder="Goal Knowledge"),
+                            dcc.Input(id="input1", type="text", placeholder="ID"),
                             html.Div(id="output")
                         ],
                         style={'height': '300px'}
@@ -262,8 +244,7 @@ app.layout = html.Div([
             html.Div(
                 className="eight columns",
                 children=[dcc.Graph(id="my-graph",
-                                    style={'margin-top':'180px'},
-                                    figure=network_graph(YEAR, ID))],
+                                    figure=network_graph(YEAR, ACCOUNT))],
             ),
 
             #########################################right side two output component
